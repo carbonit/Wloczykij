@@ -1,0 +1,78 @@
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing Rails::InfoController#properties (for 127.0.0.1 at 2010-04-24 18:58:27) [GET]
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW TABLES[0m
+Completed in 87ms (View: 17, DB: 1) | 200 OK [http://localhost/rails/info/properties]
+  [4;36;1mSQL (25.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing Rails::InfoController#properties (for 127.0.0.1 at 2010-04-24 19:00:00) [GET]
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW TABLES[0m
+Completed in 29ms (View: 3, DB: 26) | 200 OK [http://localhost/rails/info/properties]
+  [4;36;1mSQL (51.7ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (118.3ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (323.5ms)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (139.9ms)[0m   [0;1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;35;1mSQL (6.2ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100424190310)
+  [4;35;1mSQL (6.8ms)[0m   [0mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `login` varchar(255), `password` varchar(255), `token` varchar(255), `name` varchar(255), `surname` varchar(255), `tel` varchar(255), `mail` varchar(255), `status` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (1.7ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100424190310')[0m
+Migrating to CreateStudents (20100424190435)
+  [4;35;1mSQL (16.0ms)[0m   [0mCREATE TABLE `students` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `class_id` int(11), `name` varchar(255), `surname` varchar(255), `tel` varchar(255), `adress` text) ENGINE=InnoDB[0m
+  [4;36;1mSQL (1.8ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100424190435')[0m
+Migrating to CreateClasses (20100424190454)
+  [4;35;1mSQL (24.2ms)[0m   [0mCREATE TABLE `classes` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `school_id` int(11), `user_id` int(11), `name` varchar(255)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (1.7ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100424190454')[0m
+Migrating to CreateSchools (20100424190527)
+  [4;35;1mSQL (8.5ms)[0m   [0mCREATE TABLE `schools` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `nazwa` varchar(255), `tel` varchar(255), `adress` text, `mail` varchar(255), `nip` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100424190527')[0m
+Migrating to CreateAbsences (20100424190624)
+  [4;35;1mSQL (18.3ms)[0m   [0mCREATE TABLE `absences` (`student_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (1.7ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100424190624')[0m
+Migrating to CreateMessages (20100424190753)
+  [4;35;1mSQL (6.3ms)[0m   [0mCREATE TABLE `messages` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `to` int(11), `from` int(11), `body` text, `title` varchar(255), `type` varchar(255), `read` tinyint(1) DEFAULT 0) ENGINE=InnoDB[0m
+  [4;36;1mSQL (13.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100424190753')[0m
+Migrating to CreateNews (20100424190812)
+  [4;35;1mSQL (6.8ms)[0m   [0mCREATE TABLE `news` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `title` varchar(255), `body` text, `created_by` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (1.4ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100424190812')[0m
+Migrating to CreateRaports (20100424190829)
+  [4;35;1mSQL (8.6ms)[0m   [0mCREATE TABLE `raports` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `title` varchar(255), `body` varchar(255)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (1.8ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100424190829')[0m
+Migrating to CreateSms (20100424190851)
+  [4;35;1mSQL (13.1ms)[0m   [0mCREATE TABLE `sms` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `to` int(11), `from` int(11), `body` text, `type` varchar(255)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (1.4ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100424190851')[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (55.0ms)[0m   [0;1mSHOW FIELDS FROM `absences`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mdescribe `absences`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `absences`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSHOW FIELDS FROM `classes`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mdescribe `classes`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `classes`[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mSHOW FIELDS FROM `messages`[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mdescribe `messages`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `messages`[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mSHOW FIELDS FROM `news`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mdescribe `news`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `news`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSHOW FIELDS FROM `raports`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mdescribe `raports`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `raports`[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mSHOW FIELDS FROM `schools`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mdescribe `schools`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `schools`[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mSHOW FIELDS FROM `sms`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mdescribe `sms`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `sms`[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mSHOW FIELDS FROM `students`[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mdescribe `students`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `students`[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mdescribe `users`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `users`[0m
